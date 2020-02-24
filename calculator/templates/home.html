@@ -2,9 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>calculator</title>
+    <h1>Calculator</h1>
 </head>
-<body>
+<body style="background-color: lightyellow">
+    <hr>
+
+    <h2>Simple Calculator</h2>
+
+    <h3>for X and Y please enter only <br></h3>
+    <h3 style="color:red">Number</h3>
+    <h3>for OPERATOR please enter only</h3>
+    <h3 style="color:red">+,&emsp;-,&emsp;*,&emsp;/</h3>
+
+    <form action="/input/" method="post">
+    <label for="x">X: &emsp;&emsp;&nbsp;&nbsp;</label>
+    <input id="x" type="text" name="x" value="{{ current_x }}" placeholder="number">
+    <p>
+    <label for="operator">Operator: </label>
+    <input id="operator" type="text" name="operator" value="{{ current_operator }}" placeholder="+,-,*,/">
+    </p>
+    <label for="y">Y: &emsp;&emsp;&nbsp;&nbsp;</label>
+    <input id="y" type="text" name="y" value="{{ current_y }}" placeholder="number">
+    <input type="submit" value="calculate">
+    </form>
+
+
 
 </body>
 </html>

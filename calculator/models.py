@@ -1,11 +1,14 @@
 from django.db import models
 
-class varaiables(models.Model):
+class UserInput(models.Model):
 	#topic = models.ForeignKey(topic, on_delete=models.DO_NOTHING,)
-	x = models.TextField(max_length=200, blank=True, null=True)
-	y = models.TextField(max_length=200, blank=True, null=True)
-	operator = models.CharField(max_length=200, blank=True, null=True)
+	objects = None
+	user_x = models.TextField(max_length=200, blank=True, null=True)
+	user_y = models.TextField(max_length=200, blank=True, null=True)
+	user_operator = models.CharField(max_length=200, blank=True, null=True)
 	result = models.TextField(max_length=200, blank=True, null=True)
+
+
 '''
 class Question(models.Model):
     question_text = models.CharField(max_length=200)

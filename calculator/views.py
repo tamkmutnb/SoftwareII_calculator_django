@@ -2,18 +2,35 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.mail import send_mail
 from .forms import CalculationForm
+import numbers
+import decimal
 
 def home(request):
     return render(request, 'home.html')
 
-def add(request):
-    global result
-    if request.GET.get('add_button'):
-        x = (request.POST["x"])
-        y = (request.POST["y"])
-        result = (request.POST["result"])
-        result = str(x+y)
-    return render(request, 'result.html', {'result': result})
+def calculate(request):
+    x = request.POST['num1']
+    y = request.POST['num2']
+    op = request.POST['operator']
+    int_x = int(x)
+    int_y = int(y)
+
+    '''if request.POST['add']:
+        result = int_x + int_y'''
+
+    if x.isnumeric() and y.isnumeric() and op in ('+', '-', '*', '/'):
+        if op == ('+'):
+            result = (int_x + int_y)
+        if op == ('-'):
+            result = (int_x - int_y)
+        if op == ('*'):
+            result = (int_x * int_y)
+        if op == ('/'):
+            result = (int_x / int_y)
+    else:
+        result = ('Input Error')
+    return render(request, 'result.html', {'result': result })
+
 
 def home_page(request):
     # if this is a POST request we need to process the form data

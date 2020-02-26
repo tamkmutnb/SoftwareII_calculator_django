@@ -7,15 +7,20 @@
     <title>Home_Page</title>
 </head>
 <body style="background-color: lightyellow">
-<form action="">
+<form action="{% url "calculate" %}" method="post">
+
+{% csrf_token %}
+
 <h1>this is is home.html</h1>
- Enter 1st number (this is X var) : <input type="text" name="num1"><br>
- Enter 2st number (this is Y var) : <input type="text" name="num2"><br>
- <input type="submit"> <br><br>
- <button type="button" id="add" name="add" value="add">Add</button>
- <button type="button" id="add" name="add" value="add">Subtract</button>
- <button type="button" id="add" name="add" value="add">Multiple</button>
- <button type="button" id="add" name="add" value="add">Divide</button>
+ Enter 1st number (this is X var) : <input type="text" name="num1" placeholder="for X enter Number ONLY"><br>
+ Enter 2st number (this is Y var) : <input type="text" name="num2" placeholder="for Y enter Number ONLY"><br>
+ Enter Operater &nbsp;&nbsp;&nbsp; (+, -, *, /) : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="operator" placeholder="for operator ' +, -, *, / ' ONLY"><br><br>
+ <input type="submit" value="Calculate"> <br><br>
+<!--
+ <button type="button" id="add" name="add" >Add</button>
+ <button type="button" id="subtract" name="subtract" >Subtract</button>
+ <button type="button" id="multiply" name="multiply" >Multiply</button>
+ <button type="button" id="divide" name="divide" >Divide</button>-->
 
 
 

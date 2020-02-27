@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from calculator import views
-
+#from calculator_get import views
 from django.urls import path, include
 from django.contrib import admin
 
@@ -26,5 +26,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('calculate', views.calculate, name='calculate'),
     path('delete/<str:id>', views.delete, name='delete'),
-    path('calculator_get', )
+    #path('calculator_get', views.calculate_get, name='calculator_get'),
 ]

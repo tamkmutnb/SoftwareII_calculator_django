@@ -6,6 +6,17 @@
     <title>Result Title</title>
 </head>
 <body>
-Result : {{ result }}
+<form action="{% url "home" %}" method="post">
+    {% csrf_token %}
+
+Result : {{ result }} <br>
+Log :
+    {% for i in log %}
+    <p>{{ i.user_x }}</p>
+    {% endfor %}
+
+<input type="submit" value="Go to my link location"
+         name="back_home" id="back_home" />
+</form>
 </body>
 </html>

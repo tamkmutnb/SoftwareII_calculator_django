@@ -2,7 +2,7 @@ from django.db import models
 
 class UserInput(models.Model):
 	#topic = models.ForeignKey(topic, on_delete=models.DO_NOTHING,)
-	objects = None
+	#objects = None
 	user_x = models.TextField(max_length=200, blank=True, null=True)
 	user_y = models.TextField(max_length=200, blank=True, null=True)
 	user_operator = models.CharField(max_length=200, blank=True, null=True)

@@ -4,21 +4,24 @@ from django.core.mail import send_mail
 from .forms import CalculationForm
 import numbers
 import decimal
+from .models import UserInput
 
 def home(request):
-    return render(request, 'home.html')
+    log = UserInput.objects.all()
+    return render(request, 'home.html', {'log': log })
 
 def calculate(request):
     x = request.POST['num1']
     y = request.POST['num2']
     op = request.POST['operator']
-    int_x = int(x)
-    int_y = int(y)
+    log = UserInput.objects.all()
 
     '''if request.POST['add']:
         result = int_x + int_y'''
 
     if x.isnumeric() and y.isnumeric() and op in ('+', '-', '*', '/'):
+        int_x = int(x)
+        int_y = int(y)
         if op == ('+'):
             result = (int_x + int_y)
         if op == ('-'):
@@ -27,9 +30,20 @@ def calculate(request):
             result = (int_x * int_y)
         if op == ('/'):
             result = (int_x / int_y)
+        UserInput.objects.create(user_x = x, user_y = y, user_operator = op, result = result)
+
+
     else:
         result = ('Input Error')
-    return render(request, 'result.html', {'result': result })
+    return render(request, 'home.html', {'result': result, 'log': log })
+
+
+def delete(request, id):
+    UserInput.objects.get(id=id).delete()
+    log = UserInput.objects.all()
+    return render(request, 'home.html', {'log': log })
+
+
 
 
 def home_page(request):

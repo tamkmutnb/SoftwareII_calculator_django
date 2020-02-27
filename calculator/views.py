@@ -11,9 +11,9 @@ def home(request):
     return render(request, 'home.html', {'log': log })
 
 def calculate(request):
-    x = request.GET['num1']
-    y = request.GET['num2']
-    op = request.GET['operator']
+    x = request.POST['num1']
+    y = request.POST['num2']
+    op = request.POST['operator']
     log = UserInput.objects.all()
 
     '''if request.POST['add']:

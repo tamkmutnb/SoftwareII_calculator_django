@@ -26,5 +26,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('calculate', views.calculate, name='calculate'),
     path('delete/<str:id>', views.delete, name='delete'),
-    #path('clr/<str:id>', views.clr, name='clr'),
+    path('calculator_get', )
 ]

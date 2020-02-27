@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+    <title>Home_Page</title>
+</head>
+<body style="background-color: lightyellow">
+<form action="{% url "calculate" %}" method="post">
+
+{% csrf_token %}
+
+<h1>Welcome to web app calculator !</h1>
+    <label id="fst_num_label" for="fst_num_label">Enter 1st number (this is X var) :</label> <input type="text" name="num1" placeholder="for X enter Number ONLY"><br>
+    <label id="sec_num_label" for="sec_num_label">Enter 2st number (this is Y var) :</label> <input type="text" name="num2" placeholder="for Y enter Number ONLY"><br>
+    <label id="op_label" for="op_label">Enter Operator &nbsp;&nbsp;&nbsp; (+, -, *, /) : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" name="operator" placeholder="for operator ' +, -, *, / ' ONLY"><br><br>
+ <input type="submit" value="Calculate" name="Calculate_btn"> <br><br>
+    <label id="result" for = "result">Result :</label>{{ result }}
+    {% csrf_token %}
+</form>
+<label id="log_label" for="log_label">Log :</label> <br><br>
+    <!--<input type="submit" value="Clear_All" name="Clear_btn"> -->
+    {% for i in log %}
+    <form action="{% url 'delete' i.id %}" method="post">
+        {% csrf_token %}
+    <!--
+        <textarea id="log_table" rows="20" cols="50"> to show i number use { { i.id }}_:
+    </textarea>-->
+
+    <br><br>
+
+    {{ i.user_x }} {{ i.user_operator }} {{ i.user_y }} = {{ i.result }} <input type="submit" value="delete" onclick="">
+    <br><br>
+            <!--<META HTTP-EQUIV="Refresh" CONTENT="0;URL=http://127.0.0.1:8000/">
+            <META HTTP-EQUIV="" CONTENT="0;URL=http://127.0.0.1:8000/" > -->
+
+    {% endfor %}
+    {{ result }}
+    </form>
+<!--
+ <button type="button" id="add" name="add" >Add</button>
+ <button type="button" id="subtract" name="subtract" >Subtract</button>
+ <button type="button" id="multiply" name="multiply" >Multiply</button>
+ <button type="button" id="divide" name="divide" >Divide</button>-->
+
+
+
+
+
+</body>
+</html>

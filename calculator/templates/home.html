@@ -7,7 +7,7 @@
     <title>Home_Page</title>
 </head>
 <body style="background-color: lightyellow">
-<form action="{% url "calculate" %}" method="post">
+<form action="{% url "calculate" %}" method="POST">
 
 {% csrf_token %}
 
@@ -22,7 +22,7 @@
 <label id="log_label" for="log_label">Log :</label> <br><br>
     <!--<input type="submit" value="Clear_All" name="Clear_btn"> -->
     {% for i in log %}
-    <form action="{% url 'delete' i.id %}" method="post">
+    <form action="{% url 'delete' i.id %}" method="POST">
         {% csrf_token %}
     <!--
         <textarea id="log_table" rows="20" cols="50"> to show i number use { { i.id }}_:

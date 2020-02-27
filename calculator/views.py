@@ -6,6 +6,9 @@ import numbers
 import decimal
 from .models import UserInput
 
+def index(request):
+    return render(request, 'index.html')
+
 def home(request):
     log = UserInput.objects.all()
     return render(request, 'home.html', {'log': log })
@@ -39,7 +42,7 @@ def calculate(request):
 
 
 def delete(request, id):
-    UserInput.objects.get(id=id).delete()
+    UserInput.objects.POST(id=id).delete()
     log = UserInput.objects.all()
     return render(request, 'home.html', {'log': log })
 
